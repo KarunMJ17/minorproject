@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Events Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+        .calendar-nav form {
+            display: inline;
+        }
+        .calendar-nav h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        table {
+            width: 80%;
+            max-width: 800px;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1rem;
+        }
+        td {
+            background-color: #ffffff;
+            font-size: 1rem;
+            position: relative;
+        }
+        td.highlight {
+            background-color: #e0f7fa;
+        }
+        .event-name, .club-name {
+            font-size: 0.85rem;
+            margin: 5px 0;
+            padding: 4px;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+        }
+        .event-name {
+            color: #ff5722;
+            font-weight: bold;
+        }
+        .club-name {
+            color: #00796b;
+            font-style: italic;
+        }
+        .calendar-nav button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        .calendar-nav button:hover {
+            background-color: #388e3c;
+        }
+        td:hover {
+            background-color: #f1f8e9;
+        }
+        @media (max-width: 600px) {
+            .calendar-nav h2 {
+                font-size: 1.25rem;
+            }
+            th, td {
+                padding: 10px;
+            }
+            .calendar-nav button {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Club Events Calendar</h1>
+
+    <!-- Calendar Navigation -->
+    <div class="calendar-nav">
+        <form action="/view-calendar" method="get" style="display:inline;">
+            <input type="hidden" name="month" value="<%= prevMonth %>">
+            <input type="hidden" name="year" value="<%= prevYear %>">
+            <button type="submit">Previous Month</button>
+        </form>
+
+        <h2><%= new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' }) %> <%= currentYear %></h2>
+
+        <form action="/view-calendar" method="get" style="display:inline;">
+            <input type="hidden" name="month" value="<%= nextMonth %>">
+            <input type="hidden" name="year" value="<%= nextYear %>">
+            <button type="submit">Next Month</button>
+        </form>
+    </div>
+
+    <!-- Calendar Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let day = 1; %>
+            <% for (let i = 0; i < 6; i++) { %>
+                <tr>
+                    <% for (let j = 0; j < 7; j++) { %>
+                        <% if (i === 0 && j < firstDayWeekday) { %>
+                            <td></td>
+                        <% } else if (day <= totalDaysInMonth) { %>
+                            <% const currentDay = new Date(currentYear, currentMonth, day); %>
+                            <td class="<%= events.some(event => new Date(event.date).toDateString() === currentDay.toDateString()) ? 'highlight' : '' %>">
+                                <%= day %>
+                                <% events.forEach(event => { 
+                                    if (new Date(event.date).toDateString() === currentDay.toDateString()) { %>
+                                        <div class="event-name"><%= event.name %></div>
+                                        <div class="club-name">Hosted by: <%= event.clubName %></div>
+                                <% } }) %>
+                            </td>
+                            <% day++; %>
+                        <% } else { %>
+                            <td></td>
+                        <% } %>
+                    <% } %>
+                </tr>
+            <% } %>
+        </tbody>
+        
+    </table>
+    <div>
+        <a href="/home"><button>Go to Home</button></a>
+    </div>
+</body>
+</html>

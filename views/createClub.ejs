@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('/images/create-club-background.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .create-club-container {
+            background-color: #ffffffbc;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #2575fc;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6a11cb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        a:hover {
+            background-color: #2575fc;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="create-club-container">
+        <h1>Create a New Club</h1>
+        <form action="/create-club" method="POST">
+            <label for="clubName">Club Name:</label>
+            <input type="text" name="clubName" id="clubName" required>
+
+            <label for="motto">Motto:</label>
+            <input type="text" name="motto" id="motto" required>
+
+            <label for="password">Club Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <label for="chairman">Chairman:</label>
+            <input type="text" name="chairman" id="chairman" required>
+
+            <label for="secretary">Secretary:</label>
+            <input type="text" name="secretary" id="secretary" required>
+
+            <label for="president">President:</label>
+            <input type="text" name="president" id="president" required>
+
+            <button type="submit">Create Club</button>
+        </form>
+        <a href="/home">Back to Home</a>
+    </div>
+</body>
+</html>

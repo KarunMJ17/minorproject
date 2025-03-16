@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Club Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+                ul li a,
+        a.logout {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #25fc29;
+            color: white;
+            text-decoration: none;  
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+            width: 40%; /* Full width */
+            text-align: center; /* Center text */
+            box-sizing: border-box; /* Ensure padding doesn't add to width */
+}
+
+
+        body {
+            background-image: url('/images/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        
+        /* Home container styling */
+        .home-container {
+            text-align: center;
+            background-color: rgba(245, 239, 239, 0.716);
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in-out;
+            transition: transform 0.3s;
+        }
+
+        .home-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* List and button styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 15px 0;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        ul li:nth-child(1) { animation-delay: 0.2s; }
+        ul li:nth-child(2) { animation-delay: 0.4s; }
+        ul li:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Link styling */
+        ul li a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #1ed242;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        ul li a:hover {
+            background-color: #6a11cb;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+        }
+
+        /* Logout button styling */
+        a.logout {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background-color: #6a11cb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        a.logout:hover {
+            background-color: #2575fc;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <h1>Welcome to Club Management</h1>
+        <ul>
+            <li><a href="/create-club">Create Club</a></li>
+            <li><a href="/view-calendar">View Calendar</a></li>
+            <li><a href="/request-to-join">Clubs of College</a></li>
+            <li><a href="/edit-club-password">Edit Club</a></li>
+        </ul>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+</body>
+</html>

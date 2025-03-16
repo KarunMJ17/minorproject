@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Club</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        input, textarea {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background: #6a11cb;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #2575fc;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Edit Club</h1>
+        <form action="/edit-club/<%= club._id %>" method="POST">
+            <input type="text" name="name" value="<%= club.name %>" placeholder="Club Name" required>
+            <textarea name="motto" placeholder="Club Motto" required><%= club.motto %></textarea>
+            <input type="text" name="chairman" value="<%= club.roles.chairman %>" placeholder="Chairman" required>
+            <input type="text" name="secretary" value="<%= club.roles.secretary %>" placeholder="Secretary" required>
+            <input type="text" name="president" value="<%= club.roles.president %>" placeholder="President" required>
+            <button type="submit">Save Changes</button>
+
+           
+    <div class="back-home">
+        <a href="/home">Back to Home</a>
+        </form>
+    </div>
+</body>
+</html>

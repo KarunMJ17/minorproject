@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request to Join Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('/images/view-clubs-background.jpg');
+            background-size: contain; /* Change this to contain */
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #fafafa;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .club-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+
+        .motto {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .go-home-btn {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .go-home-btn a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Request to Join a Club</h1>
+        
+        <!-- List all available clubs -->
+        <h2>Available Clubs</h2>
+        <ul>
+            <% clubs.forEach(club => { %>
+                <li>
+                    <div>
+                        <span class="club-name"><%= club.name %></span> - 
+                        <span class="motto"><%= club.motto %></span>
+                    </div>
+                    <!-- Add a button or form to request joining the club -->
+                    <form action="/request-to-join-club/<%= club._id %>" method="POST">
+                        <button type="submit">Request to Join</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+
+        <!-- Go to Home Button -->
+        <div class="go-home-btn">
+            <a href="/home"><button>Go to Home</button></a>
+        </div>
+    </div>
+</body>
+</html>

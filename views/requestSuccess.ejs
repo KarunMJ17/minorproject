@@ -1,0 +1,60 @@
+<!-- views/requestSuccess.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Submitted</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+        .success-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2575fc;
+        }
+
+        p {
+            color: #333;
+        }
+
+        button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <h1>Request Submitted Successfully</h1>
+        <p>Your request to join <strong><%= clubName %></strong> has been sent, <strong><%= userName %></strong>.</p>
+        <p>Wait for the club admins to review your request.</p>
+        <a href="/home">
+            <button>Go to Home</button>
+        </a>
+    </div>
+</body>
+</html>
